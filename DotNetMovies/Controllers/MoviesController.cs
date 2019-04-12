@@ -10,6 +10,22 @@ namespace DotNetMovies.Controllers
 {
     public class MoviesController : Controller
     {
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie { Id = 1, Name = "Inception" },
+                new Movie { Id = 2, Name = "The Fountain" }
+            };
+        }
+
+        public ViewResult Index()
+        {
+            var movies = GetMovies();
+            return View(movies);
+        }
+
         // GET: Movies
         public ActionResult Random()
         {
